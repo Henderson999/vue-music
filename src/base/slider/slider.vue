@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
   import BScroll from 'better-scroll'
   import {addClass} from 'common/js/dom'
 
@@ -107,7 +107,10 @@
       this.timer = setTimeout(() => {
          this.slider.goToPage(pageIndex, 0, 400)
       }, this.interval)
-    }
+    },
+    destoryed() {
+       clearTimeout(this.timer)
+    },
   }
 }
 </script>

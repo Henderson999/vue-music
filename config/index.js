@@ -10,7 +10,22 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    //build文件夹下是有个dev-serve.js文件的
+    //新版模板中build下没有这个文件
+    //只需要在config文件夹下的index.js文件中找到proxyTable关键字 配置反向代理实现跨域
+    proxyTable: {
+      '/api/getDiscList': {
+        target: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg',
+        bypass: function (req, res, proxyOptions) {
+          req.headers.referer = 'https://c.y.qq.com';
+          req.headers.host = 'c.y.qq.com';
+        },
+        pathRewrite: {
+          '^/api/getDiscList': ''
+        }
+      }
+    },
+//注意上面的写法
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
