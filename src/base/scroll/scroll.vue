@@ -20,6 +20,10 @@
       data: {
         type: Array,
         default: null
+      },
+      listenScroll: {
+        type: Boolean,
+        default:false
       }
     },
     mounted() {
@@ -36,6 +40,13 @@
           probeType: this.probeType,
           click: this.click
         })
+
+        if(this.listenScroll) {
+          let me = this
+          this.scroll.on('scroll', (pos) => {
+            me.$emit('scroll', pos) //$emit 用来触发父组件的自定义事件 
+          })
+        }
       },
       enable() {
         this.scroll && this.scroll.enable()
@@ -45,6 +56,13 @@
       },
       refresh() {
         this.scroll && this.scroll.refresh()
+      },
+      //自带的点击跳转方法
+      scrollTo() {
+        this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+      },
+      scrollToElement() {
+        this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
       }
     },
     watch: {
