@@ -24,6 +24,18 @@
       listenScroll: {
         type: Boolean,
         default:false
+      },
+      pullup: {
+        type: Boolean,
+        default: false
+      },
+      beforeScroll: {
+        type: Boolean,
+        default: false
+      },
+      refreshDelay: {
+        type: Number,
+        default: 20
       }
     },
     mounted() {

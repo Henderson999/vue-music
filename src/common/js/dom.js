@@ -23,8 +23,8 @@ export function getData(el, name, val) {
   return el.getAttribute(prefix + name)
 }
 
-let elementStyle = document.createElement('div').style
-
+let elementStyle = document.createElement('div').style 
+//浏览器兼容Js
 let vendor = (() => {
   let transformNames = {
     webkit: 'webkitTransform',

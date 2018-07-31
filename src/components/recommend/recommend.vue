@@ -1,6 +1,6 @@
 <template>
   <div class="recommend">
-  	<scroll class="recommend-content" :data="discList">
+  	<scroll ref="scroll" class="recommend-content" :data="discList">
      <div>
   		<div v-if="recommends.length" class="slider-wrapper">
         <slider>
@@ -70,8 +70,8 @@
      },
      loadImage() {
       if(!this.checkLoaded){
-      this.$refs.scroll.refresh()
       this.checkLoaded = true
+      this.$refs.scroll.refresh()
       }
      }
    },
