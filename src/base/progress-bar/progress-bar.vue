@@ -49,12 +49,15 @@
           this._triggerPercent ()
         },
         progressClick(e) {
-          this.offset(e.offsetX)
+         // this._offset(e.offsetX)
+          const rect = this.$refs.progressBar.getBoundingClientRect()
+          const offsetWidth = e.pageX - rect.left
+          this._offset(offsetWidth)
           this._triggerPercent ()
         },
         _offset(offsetWidth) {  //函数封装 减少重复
         	this.$refs.progress.style.width = `${offsetWidth}px`
-            this.$refs.progressBtn.style[transform] = `translated3d(${offsetWidth}px,0,0)`
+          this.$refs.progressBtn.style[transform] = `translated3d(${offsetWidth}px, 0, 0)`
         },
         _triggerPercent () {
           const barWidth = this.$refs.progressBar.clientWidth - progressBtnWidth
