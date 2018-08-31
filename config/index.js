@@ -17,19 +17,35 @@ module.exports = {
       '/api/getDiscList': {
         target: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg',
         bypass: function (req, res, proxyOptions) {
-          req.headers.referer = 'https://c.y.qq.com';
+          req.headers.referer = 'https://y.qq.com/';
           req.headers.host = 'c.y.qq.com';
         },
+        secure: false,
+        changeOrigin:true,
         pathRewrite: {
           '^/api/getDiscList': ''
+        }
+      },
+      '/api/getSongList': {
+        target: 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg',
+        bypass: function (req, res, proxyOptions) {
+          req.headers.referer = 'https://y.qq.com/';
+          req.headers.host = 'c.y.qq.com';
+        },
+        secure: false,
+        changeOrigin:true,
+        pathRewrite: {
+          '^/api/getSongList': ''
         }
       },
       '/api/lyric': {
         target: 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg',
         bypass: function (req, res, proxyOptions) {
-          req.headers.referer = 'https://c.y.qq.com';
+          req.headers.referer = 'https://y.qq.com/';
           req.headers.host = 'c.y.qq.com';
         },
+        secure: false,
+        changeOrigin:true,
         pathRewrite: {
           '^/api/lyric': ''
         }
