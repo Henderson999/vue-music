@@ -17,7 +17,7 @@
     const HOT_SINGER_LEN = 10
 
 	export default {
-		mixin: [playlistMixin],
+		mixins: [playlistMixin],
 		data() {
 			return {
 			  singers:[]
@@ -27,7 +27,7 @@
 			this._getSingerList()
 		},
 		methods: {
-			handlePlaylist() {
+			handlePlaylist(playlist) {
               const bottom = playlist.length > 0 ? '60px' : ''
               this.$refs.singer.style.bottom = bottom
               this.$refs.list.refresh()
